@@ -10,7 +10,7 @@ export class Menu extends Document{
   title:string;
 
   @Prop({type:Food})
-  items:Food[];
+  items:[Food];
 }
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);

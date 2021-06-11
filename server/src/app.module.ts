@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose'
-import { UserController } from './user/user.controller';
+import { UserController } from './Controllers/user/user.controller';
 import { MenuController } from './Controllers/menu/menu.controller';
-import { SessionController } from './session/session.controller';
+import { SessionController } from './Controllers/session/session.controller';
 require('dotenv').config();
 
 

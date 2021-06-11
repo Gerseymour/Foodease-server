@@ -12,10 +12,16 @@ export class User{
   email: string
 
   @Prop()
-  friendsList:string[]
+  passwordHash: string
 
   @Prop()
-  sessionList:string[]
+  menuList:[string]
+
+  @Prop()
+  friendsList:[string]
+
+  @Prop()
+  sessionList:[string]
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

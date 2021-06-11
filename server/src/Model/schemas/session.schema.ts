@@ -16,16 +16,14 @@ export class Session extends Document{
   menu_id:string
 
   @Prop({default:false})
-  user_1_isComplete:Boolean
+  user_1_isComplete:boolean
 
   @Prop({default:false})
-  user_2_isComplete:Boolean
+  user_2_isComplete:boolean
 
-  @Prop()
-  sessionList:string[]
-  
+
   @Prop({type: Food})
-  decision:Food[]
+  decision:[Food]
 }
 
 export const SessionSchema = SchemaFactory.createForClass(Session);
