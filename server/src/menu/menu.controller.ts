@@ -1,10 +1,17 @@
 import { Controller, Get, Post, Put, Delete } from '@nestjs/common';
+import { CreateMenuDto } from './create-menu.dto'
+import { MenuService } from './menu.service'
+import { Menu, Food } from './menu.interface'
+
 
 @Controller('menu')
 export class MenuController {
+  constructor(private readonly menuService: MenuService) {}
+
+
   @Get()
-  findAll(): string {
-    return 'get all items';
+  findAll(): Food[] {
+    return this.menuService.findAll();
   }
 
   @Post()
