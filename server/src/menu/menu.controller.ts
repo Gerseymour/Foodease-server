@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param } from '@nestjs/common';
 import { CreateMenuDto } from './create-menu.dto'
 import { MenuService } from './menu.service'
-import { Menu, Food } from './menu.interface'
+import { Menu, Food, MenuItem } from './menu.interface'
 
 
 @Controller('menu')
@@ -9,8 +9,13 @@ export class MenuController {
   constructor(private readonly menuService: MenuService) {}
 
 
+  @Get(':id')
+  findOne(@Param('id') id): Menu {
+    return this.menuService.findOne(id);
+  }
+
   @Get()
-  findAll(): Food[] {
+  findAll(): MenuItem[] {
     return this.menuService.findAll();
   }
 

@@ -1,12 +1,109 @@
 import { Injectable } from '@nestjs/common';
-// import { Menu } from 'src/Model/schemas/menu.schema';
-import { Menu, Food } from './menu.interface'
+import { Menu, Food, MenuItem } from './menu.interface'
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose'
+
+
 
 @Injectable()
 export class MenuService {
 
-
+  // constructor(@InjectModel('Menu') private readonly menuModel: Model<Menu>, @InjectModel('MenuItem') private readonly menuItemModel: Model<MenuItem>) {}
+  
+  //  async findOne (id:string): Promise<Menu> {
+  //   return await this.menuModel.find(menu => menu.id === id);
+  // }
+  
+  findOne (id:string) : Menu {
+    return this.menu.find(item => item.id === id)
+  }
+  findAll(): MenuItem[] {
+    const results = [];
+    this.menu.forEach(menu => { 
+      const res = {id: menu.id,title: menu.title}
+      results.push(res)
+    });
+    return results
+  }
+  
   private readonly menu: Menu[] = [{
+    id: '0',
+    title: 'Pizza',
+    items: [
+      {
+        id: '1',
+        title:'Pepperoni',
+        emoji:'🍕',
+        additionalInfo:'Pepperoni and cheese',
+        like:false
+      },
+      {
+        id: '2',
+        title:'Pepperoni & Chillis',
+        emoji:'🌶',
+        additionalInfo:'Pepperoni and Chilli',
+        like:false
+      },
+      {
+        id: '3',
+        title:'Hawwiian',
+        emoji:'🍍',
+        additionalInfo:'Pineapple and Ham',
+        like:false
+      },
+      {
+        id: '4',
+        title:'Veggie',
+        emoji:'🥦',
+        additionalInfo:'Broccoli and mushrooms',
+        like:false
+      },
+      {
+        id: '5',
+        title:'Meat Feast',
+        emoji:'🍖',
+        additionalInfo:'Lots of meat',
+        like:false
+      },
+      {
+        id: '6',
+        title:'Margarita',
+        emoji:'🧀',
+        additionalInfo:'Just cheese thankyou',
+        like:false
+      },
+      {
+        id: '7',
+        title:'Tandoori Chicken',
+        emoji:'🍗',
+        additionalInfo:'Curried Chicken',
+        like:false
+      },
+      {
+        id: '8',
+        title:'Parmaham',
+        emoji:'🥓',
+        additionalInfo:'Bacon but thinner',
+        like:false
+      },
+      {
+        id: '9',
+        title:'Diavola',
+        emoji:'🌭',
+        additionalInfo:'Spicy pepperoni',
+        like:false
+      },
+      {
+        id: '10',
+        title:'Tomato',
+        emoji:'🍅',
+        additionalInfo:'Tomato and Basil',
+        like:false
+      },
+      
+    ]
+  },
+  {
     id: '1',
     title: 'Takeaway',
     items: [
@@ -83,11 +180,6 @@ export class MenuService {
       
     ]
   }]
-
-  findAll (): Food[] {
-    return this.menu[0].items;
-  }
-
 
 
 }
