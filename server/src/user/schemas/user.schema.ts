@@ -5,7 +5,10 @@ export const UserSchema = new mongoose.Schema({
   email: String,
   passwordHash: String,
   verified: Boolean,
-  menuList: [String],
+  menuList: {
+    type: [String],
+    default: ['60c75bd354ae1a0a680561c3', '60c761a927bd572dec04bdea'],
+  },
   friendsList: [String],
   sessionList: [String],
 })
