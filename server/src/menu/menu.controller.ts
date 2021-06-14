@@ -10,7 +10,7 @@ export class MenuController {
 
 
   @Get(':id')
-  findOne(@Param('id') id): Menu {
+  async findOne(@Param('id') id): Promise<Menu> {
     return this.menuService.findOne(id);
   }
 
@@ -19,18 +19,18 @@ export class MenuController {
     return this.menuService.findAll();
   }
 
-  @Post()
-  createMenu(): string {
-    return 'new menu';
-  }
+  // @Post()
+  // createMenu(): string {
+  //   return 'new menu';
+  // }
 
-  @Put()
-  addToMenu(): string {
-    return 'added to menu';
-  }
+  // @Put()
+  // addToMenu(): string {
+  //   return 'added to menu';
+  // }
 
-  @Delete()
-  deleteMenu(): string {
-    return 'menu delete';
-  }
+  // @Delete()
+  // deleteMenu(): string {
+  //   return 'menu delete';
+  // }
 }

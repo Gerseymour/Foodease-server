@@ -8,10 +8,10 @@ import { InjectModel } from '@nestjs/mongoose'
 @Injectable()
 export class MenuService {
 
-  // constructor(@InjectModel('Menu') private readonly menuModel: Model<Menu>, @InjectModel('MenuItem') private readonly menuItemModel: Model<MenuItem>) {}
+  // constructor(@InjectModel('Menu') private readonly menuModel: Model<Menu>) {}
   
   //  async findOne (id:string): Promise<Menu> {
-  //   return await this.menuModel.find(menu => menu.id === id);
+  //   return await this.menuModel.findOne({_id:id});
   // }
   
   findOne (id:string) : Menu {

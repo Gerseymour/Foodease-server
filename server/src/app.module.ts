@@ -17,7 +17,7 @@ require('dotenv').config();
 
 
 @Module({
-  imports: [MongooseModule.forRoot(`mongodb://localhost:27017/${process.env.DB_name}`), UserModule, MenuModule, SessionModule],
+  imports: [MenuModule, UserModule,  SessionModule, MongooseModule.forRoot(`mongodb://localhost:27017/${process.env.DB_name}`)],
   controllers: [AppController, UserController, MenuController, SessionController],
   providers: [AppService, MenuService, UserService, SessionService],
 })
