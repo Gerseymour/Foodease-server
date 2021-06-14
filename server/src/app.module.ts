@@ -6,6 +6,8 @@ import { MenuModule } from './menu/menu.module'
 import { UserModule } from './user/user.module'
 import { SessionModule }from './session/session.module'
 import { menuProviders } from './menu/menu.providers'
+import { userProviders } from './user/user.providers'
+
 import { DatabaseModule } from './Model/database.module'
 
 
@@ -19,9 +21,9 @@ require('dotenv').config();
 
 
 @Module({
-  imports: [MenuModule, UserModule,  SessionModule, DatabaseModule],
+  imports: [MenuModule, UserModule, SessionModule, DatabaseModule],
   controllers: [AppController, UserController, MenuController, SessionController],
-  providers: [AppService, MenuService, UserService, SessionService, ...menuProviders],
+  providers: [AppService, MenuService, UserService, SessionService, ...menuProviders, ...userProviders],
 })
 export class AppModule {}
 

@@ -1,12 +1,9 @@
-
-
-
 export interface User {
-  username:String,
-  email?:String,
-  passwordHash?:String,
-  menuList?:[String],
-  friendsList?:[String],
-  sessionList?:[String]
+  username: string;
+  email: string;
+  passwordHash: string;
+  verified: boolean;
+  menuList: [string];
+  friendsList: [string];
+  sessionList: [string];
 }
-
