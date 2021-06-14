@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { MenuModule } from './menu/menu.module'
 import { UserModule } from './user/user.module'
 import { SessionModule }from './session/session.module'
+import { menuProviders } from './menu/menu.providers'
+import { DatabaseModule } from './Model/database.module'
 
 
 import { MenuController } from './menu/menu.controller';
@@ -17,8 +19,11 @@ require('dotenv').config();
 
 
 @Module({
-  imports: [MenuModule, UserModule,  SessionModule, MongooseModule.forRoot(`mongodb://localhost:27017/${process.env.DB_name}`)],
+  imports: [MenuModule, UserModule,  SessionModule, DatabaseModule],
   controllers: [AppController, UserController, MenuController, SessionController],
-  providers: [AppService, MenuService, UserService, SessionService],
+  providers: [AppService, MenuService, UserService, SessionService, ...menuProviders],
 })
 export class AppModule {}
+
+
+//MongooseModule.forRoot(`mongodb://localhost:27017/foodeasedb`

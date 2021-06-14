@@ -6,11 +6,15 @@ import { MenuService } from './menu.service';
 import { MenuSchema } from './Schemas/menu.schema';
 import { FoodSchema } from './Schemas/food.schema';
 import { MenuItemSchema } from './Schemas/menuitem.schema'
+import { DatabaseModule } from '../Model/database.module'
+import { menuProviders } from './menu.providers'
 
 
 @Module({
-  imports: [MongooseModule.forFeature([{name:'Menu', schema:MenuSchema}, {name: 'MenuItem', schema:MenuItemSchema}, {name: 'Food', schema: FoodSchema}])],
+  imports: [DatabaseModule],
   controllers: [MenuController],
-  providers: [MenuService],
+  providers: [MenuService, ...menuProviders],
 })
 export class MenuModule {}
+
+//MongooseModule.forFeature([{name:'Menu', schema:MenuSchema}, {name: 'MenuItem', schema:MenuItemSchema}, {name: 'Food', schema: FoodSchema}])
