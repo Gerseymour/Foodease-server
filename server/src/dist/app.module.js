@@ -22,6 +22,7 @@ var user_module_1 = require("./user/user.module");
 var session_module_1 = require("./session/session.module");
 var menu_providers_1 = require("./menu/menu.providers");
 var user_providers_1 = require("./user/user.providers");
+var session_providers_1 = require("./session/session.providers");
 var database_module_1 = require("./Model/database.module");
 var menu_controller_1 = require("./menu/menu.controller");
 var menu_service_1 = require("./menu/menu.service");
@@ -37,7 +38,7 @@ var AppModule = /** @class */ (function () {
         common_1.Module({
             imports: [menu_module_1.MenuModule, user_module_1.UserModule, session_module_1.SessionModule, database_module_1.DatabaseModule],
             controllers: [app_controller_1.AppController, user_controller_1.UserController, menu_controller_1.MenuController, session_controller_1.SessionController],
-            providers: __spreadArrays([app_service_1.AppService, menu_service_1.MenuService, user_service_1.UserService, session_service_1.SessionService], menu_providers_1.menuProviders, user_providers_1.userProviders)
+            providers: __spreadArrays([app_service_1.AppService, menu_service_1.MenuService, user_service_1.UserService, session_service_1.SessionService], menu_providers_1.menuProviders, user_providers_1.userProviders, session_providers_1.sessionProviders)
         })
     ], AppModule);
     return AppModule;
