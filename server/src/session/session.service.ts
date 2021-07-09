@@ -12,7 +12,6 @@ export class SessionService {
 
   async createSession(user_1, user_2, menu_id): Promise<Session> {
     const newSession = new this.sessionModel({ user_1, user_2, menu_id });
-    console.log(newSession._id);
     await newSession.save();
     await this.userModel.findByIdAndUpdate(user_1, {
       sessionList: [newSession._id],
