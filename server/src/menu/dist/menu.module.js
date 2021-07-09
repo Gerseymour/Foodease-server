@@ -32,4 +32,3 @@ var MenuModule = /** @class */ (function () {
     return MenuModule;
 }());
 exports.MenuModule = MenuModule;
-//MongooseModule.forFeature([{name:'Menu', schema:MenuSchema}, {name: 'MenuItem', schema:MenuItemSchema}, {name: 'Food', schema: FoodSchema}])

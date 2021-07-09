@@ -21,20 +21,11 @@ export class SessionController {
     return this.sessionService.getSession(id);
   }
 
-
   @Put(':id')
   async updateSession(
     @Param('id') id,
     @Body() FoodDto: [FoodDto],
   ): Promise<any> {
-
-    console.log('controller', FoodDto)
     return this.sessionService.updateSession(id, FoodDto)
   }
-
-  // @Delete()
-  // async deleteSession(): Promise<Session> {
-  //   return this.sessionService.deleteSession()
-  // }
-
 }

@@ -14,9 +14,8 @@ export class UserService {
   }
 
   async logIn(username: string): Promise<User | string> {
-    const found = await this.userModel.findOne({ username: username })
+    const found = await this.userModel.findOne({ username: username });
     if (found) {
-      console.log('login',found)
       return found;
     } else {
       return 'false';
@@ -25,7 +24,6 @@ export class UserService {
 
   async signUp(user: User): Promise<User> {
     const createdUser = new this.userModel(user);
-    createdUser.verified = true
     return await createdUser.save();
   }
 

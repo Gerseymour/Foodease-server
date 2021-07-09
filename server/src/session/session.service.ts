@@ -1,8 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import * as mongoose from 'mongoose';
 import { Session } from './session.interface';
-import { User } from '../user/user.interface'
-import { UserService } from '../user/user.service';
+import { User } from '../user/user.interface';
 
 @Injectable()
 export class SessionService {
@@ -13,11 +12,14 @@ export class SessionService {
 
   async createSession(user_1, user_2, menu_id): Promise<Session> {
     const newSession = new this.sessionModel({ user_1, user_2, menu_id });
-    console.log(newSession._id)
-    await newSession.save()
-    await this.userModel.findByIdAndUpdate(user_1, { sessionList: [newSession._id] });
-    await this.userModel.findByIdAndUpdate(user_2, { sessionList: [newSession._id] });
-    console.log(await this.userModel.find())
+    console.log(newSession._id);
+    await newSession.save();
+    await this.userModel.findByIdAndUpdate(user_1, {
+      sessionList: [newSession._id],
+    });
+    await this.userModel.findByIdAndUpdate(user_2, {
+      sessionList: [newSession._id],
+    });
     return newSession;
   }
 
@@ -26,11 +28,14 @@ export class SessionService {
   }
 
   async updateSession(id, decisions): Promise<any> {
-    const session = await this.sessionModel.findOne({_id:id});
-    console.log(session,'session')
+    const session = await this.sessionModel.findOne({
+      _id: id,
+    });
     if (session.user_1_decisions.length == 0) {
-      await this.sessionModel.findByIdAndUpdate(id, { user_1_decisions: decisions})
-      return {loading:'loading'}
+      await this.sessionModel.findByIdAndUpdate(id, {
+        user_1_decisions: decisions,
+      })
+      return { loading: 'loading' }
     } else {
       const results = [];
       for (let i = 0; i < session.user_1_decisions.length; ++i) {
@@ -42,10 +47,13 @@ export class SessionService {
       }
       const randomNum = Math.floor(Math.random() * results.length);
       const final = results[randomNum]
-      await this.userModel.findByIdAndUpdate(session.user_1, {sessionList: []})
-      await this.userModel.findByIdAndUpdate(session.user_2, {sessionList: []})
+      await this.userModel.findByIdAndUpdate(session.user_1, {
+        sessionList: [],
+      });
+      await this.userModel.findByIdAndUpdate(session.user_2, {
+        sessionList: [],
+      });
 
-      // await this.sessionModel.findOneAndRemove({_id:id})
       return final;
     }
   }

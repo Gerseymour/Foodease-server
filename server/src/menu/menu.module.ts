@@ -15,5 +15,3 @@ import { menuProviders } from './menu.providers'
   providers: [MenuService, ...menuProviders],
 })
 export class MenuModule {}
-
-//MongooseModule.forFeature([{name:'Menu', schema:MenuSchema}, {name: 'MenuItem', schema:MenuItemSchema}, {name: 'Food', schema: FoodSchema}])

@@ -81,7 +81,6 @@ var UserService = /** @class */ (function () {
                     case 1:
                         found = _a.sent();
                         if (found) {
-                            console.log('login', found);
                             return [2 /*return*/, found];
                         }
                         else {
@@ -99,7 +98,6 @@ var UserService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         createdUser = new this.userModel(user);
-                        createdUser.verified = true;
                         return [4 /*yield*/, createdUser.save()];
                     case 1: return [2 /*return*/, _a.sent()];
                 }

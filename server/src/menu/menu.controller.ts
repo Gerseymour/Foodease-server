@@ -1,13 +1,7 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Param,
-  Body,
-} from '@nestjs/common';
+import { Controller, Get, Post, Param, Body } from '@nestjs/common';
 import { CreateMenuDto } from './create-menu.dto';
 import { MenuService } from './menu.service';
-import { Menu, Food, MenuItem } from './menu.interface';
+import { Menu, MenuItem } from './menu.interface';
 
 @Controller('menu')
 export class MenuController {
@@ -28,14 +22,4 @@ export class MenuController {
   async create(@Body() createMenuDto: CreateMenuDto): Promise<Menu> {
     return this.menuService.create(createMenuDto);
   }
-
-  // @Put()
-  // addToMenu(): string {
-  //   return 'added to menu';
-  // }
-
-  // @Delete()
-  // deleteMenu(): string {
-  //   return 'menu delete';
-  // }
 }

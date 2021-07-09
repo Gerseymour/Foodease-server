@@ -68,7 +68,6 @@ var SessionController = /** @class */ (function () {
     SessionController.prototype.updateSession = function (id, FoodDto) {
         return __awaiter(this, void 0, Promise, function () {
             return __generator(this, function (_a) {
-                console.log('controller', FoodDto);
                 return [2 /*return*/, this.sessionService.updateSession(id, FoodDto)];
             });
         });

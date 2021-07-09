@@ -54,25 +54,25 @@ var SessionService = /** @class */ (function () {
     }
     SessionService.prototype.createSession = function (user_1, user_2, menu_id) {
         return __awaiter(this, void 0, Promise, function () {
-            var newSession, _a, _b;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var newSession;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
                         newSession = new this.sessionModel({ user_1: user_1, user_2: user_2, menu_id: menu_id });
                         console.log(newSession._id);
                         return [4 /*yield*/, newSession.save()];
                     case 1:
-                        _c.sent();
-                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(user_1, { sessionList: [newSession._id] })];
+                        _a.sent();
+                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(user_1, {
+                                sessionList: [newSession._id]
+                            })];
                     case 2:
-                        _c.sent();
-                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(user_2, { sessionList: [newSession._id] })];
+                        _a.sent();
+                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(user_2, {
+                                sessionList: [newSession._id]
+                            })];
                     case 3:
-                        _c.sent();
-                        _b = (_a = console).log;
-                        return [4 /*yield*/, this.userModel.find()];
-                    case 4:
-                        _b.apply(_a, [_c.sent()]);
+                        _a.sent();
                         return [2 /*return*/, newSession];
                 }
             });
@@ -93,12 +93,15 @@ var SessionService = /** @class */ (function () {
             var session, results, i, j, randomNum, final;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.sessionModel.findOne({ _id: id })];
+                    case 0: return [4 /*yield*/, this.sessionModel.findOne({
+                            _id: id
+                        })];
                     case 1:
                         session = _a.sent();
-                        console.log(session, 'session');
                         if (!(session.user_1_decisions.length == 0)) return [3 /*break*/, 3];
-                        return [4 /*yield*/, this.sessionModel.findByIdAndUpdate(id, { user_1_decisions: decisions })];
+                        return [4 /*yield*/, this.sessionModel.findByIdAndUpdate(id, {
+                                user_1_decisions: decisions
+                            })];
                     case 2:
                         _a.sent();
                         return [2 /*return*/, { loading: 'loading' }];
@@ -113,15 +116,16 @@ var SessionService = /** @class */ (function () {
                         }
                         randomNum = Math.floor(Math.random() * results.length);
                         final = results[randomNum];
-                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(session.user_1, { sessionList: [] })];
+                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(session.user_1, {
+                                sessionList: []
+                            })];
                     case 4:
                         _a.sent();
-                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(session.user_2, { sessionList: [] })
-                            // await this.sessionModel.findOneAndRemove({_id:id})
-                        ];
+                        return [4 /*yield*/, this.userModel.findByIdAndUpdate(session.user_2, {
+                                sessionList: []
+                            })];
                     case 5:
                         _a.sent();
-                        // await this.sessionModel.findOneAndRemove({_id:id})
                         return [2 /*return*/, final];
                 }
             });
